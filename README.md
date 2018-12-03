@@ -1,7 +1,7 @@
 ## Usage
 
 Having aquired the container,
-[beryj7/dicoweb:latest](https://hub.docker.com/r/beryj7/dicoweb/), configure
+[beryj7/dicoweb](https://hub.docker.com/r/beryj7/dicoweb/), configure
 DICT servers—in [settings.py](./dicoweb/settings.py)—add host(s) to
 DICT_SERVERS, and launch the dicoweb client.
 
