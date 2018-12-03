@@ -129,7 +129,7 @@ LOGGING = {
 # Dicoweb specific settings.
 #
 
-DICT_SERVERS = ('10.0.0.14', 'gnu.org.ua',)
+DICT_SERVERS = ('10.0.0.14', 'dict.org', 'gnu.org.ua',)
 DICT_TIMEOUT = 10
 
 # Optional ONERROR dict controls what to do if certain errors occur.
