@@ -15,10 +15,13 @@
 #  You should have received a copy of the GNU General Public License
 #  along with GNU Dico.  If not, see <http://www.gnu.org/licenses/>.
 
+
 import re
 import socket
 import base64
 import quopri
+import sys  
+import subprocess
 
 try:
     from django.utils.six.moves import range, reduce
@@ -27,6 +30,8 @@ except ImportError:
 
 __version__ = '1.1'
 
+reload(sys)  
+sys.setdefaultencoding('utf8')
 
 class DicoClient:
 
@@ -333,8 +338,20 @@ class DicoClient:
                 if self.mime:
                     mimeinfo = self.__get_mime(i[1])
                     df.update(mimeinfo)
-                df['desc'] = '\n'.join(i[1])
+                #df['desc'] = fill('\n'.join(i[1])
+
+                desc = '\n'.join(i[1])
+                if df['db'] == 'gcide':
+                    p = subprocess.Popen(['fmt', '-w', '90'], stdout=subprocess.PIPE,
+                            stdin=subprocess.PIPE)
+                    p.stdin.write(desc)
+                    df['desc'] = p.communicate()[0]
+                    p.stdin.close()
+                else:
+                    df['desc'] = desc
+                #print df['desc']
                 defs.append(df)
+
             dct = {
                 'count': len(defs),
                 'definitions': defs,

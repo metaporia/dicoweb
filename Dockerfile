@@ -2,7 +2,7 @@ FROM debian:stretch
 
 RUN apt-get update -y && apt-get upgrade -y
 RUN apt-get install -y python-pip
-#RUN pip install virtualenv
+#RUN pip install textwrap
 
 RUN mkdir -p /var/www/
 COPY ./dicoweb /var/www/dicoweb
